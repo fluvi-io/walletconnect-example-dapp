@@ -172,7 +172,7 @@ class App extends React.Component<any, any> {
     // check if already connected
     if (!connector.connected) {
       // create new session
-      await connector.createSession();
+      await connector.createSession({ chainId: 59140 });
     }
 
     // subscribe to events
@@ -282,7 +282,7 @@ class App extends React.Component<any, any> {
   public toggleModal = () => this.setState({ showModal: !this.state.showModal });
 
   public testSendTransaction = async () => {
-    const { connector, address, chainId } = this.state;
+    const { connector, address } = this.state;
 
     if (!connector) {
       return;
@@ -293,19 +293,6 @@ class App extends React.Component<any, any> {
 
     // to
     const to = address;
-
-    // nonce
-    const _nonce = await apiGetAccountNonce(address, chainId);
-    const nonce = sanitizeHex(convertStringToHex(_nonce));
-
-    // gasPrice
-    const gasPrices = await apiGetGasPrices();
-    const _gasPrice = gasPrices.slow.price;
-    const gasPrice = sanitizeHex(convertStringToHex(convertAmountToRawNumber(_gasPrice, 9)));
-
-    // gasLimit
-    const _gasLimit = 21000;
-    const gasLimit = sanitizeHex(convertStringToHex(_gasLimit));
 
     // value
     const _value = 0;
@@ -318,9 +305,6 @@ class App extends React.Component<any, any> {
     const tx = {
       from,
       to,
-      nonce,
-      gasPrice,
-      gasLimit,
       value,
       data,
     };
