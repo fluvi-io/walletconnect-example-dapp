@@ -492,6 +492,7 @@ class App extends React.Component<any, any> {
 
       // verify signature
       const hash = hashMessage(message);
+      console.log("eth_sign (standard)", { hash, message, hexMsg });
       const valid = await verifySignature(address, result, hash, chainId);
 
       // format displayed result
@@ -588,6 +589,7 @@ class App extends React.Component<any, any> {
 
       // verify signature
       const hash = hashTypedDataMessage(message);
+      console.log({ message, hash });
       const valid = await verifySignature(address, result, hash, chainId);
 
       // format displayed result
@@ -652,9 +654,6 @@ class App extends React.Component<any, any> {
                   <STestButtonContainer>
                     <STestButton left onClick={this.testSendTransaction}>
                       {"eth_sendTransaction"}
-                    </STestButton>
-                    <STestButton left onClick={this.testSignTransaction}>
-                      {"eth_signTransaction"}
                     </STestButton>
                     <STestButton left onClick={this.testSignTypedData}>
                       {"eth_signTypedData"}

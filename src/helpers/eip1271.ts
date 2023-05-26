@@ -44,8 +44,12 @@ async function isValidSignature(
       sig,
     );
   } catch (e) {
+    console.error(e);
     return false;
   }
+
+  console.log({ returnValue });
+
   return returnValue.toLowerCase() === magicValue.toLowerCase();
 }
 

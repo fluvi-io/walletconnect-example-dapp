@@ -12,7 +12,7 @@
   "homepage": "https://walletconnect.org",
   "license": "MIT",
   "scripts": {
-    "start": "react-scripts-ts start",
+    "start": "PORT=3005 react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject",

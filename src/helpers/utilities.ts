@@ -187,8 +187,12 @@ export async function verifySignature(
   const rpcUrl = getChainData(chainId).rpc_url;
   const provider = new providers.JsonRpcProvider(rpcUrl);
   const bytecode = await provider.getCode(address);
+
+  console.log({ hash, sig });
+
   if (!bytecode || bytecode === "0x" || bytecode === "0x0" || bytecode === "0x00") {
     const signer = recoverAddress(sig, hash);
+    console.log({ s: signer.toLowerCase(), a: address.toLowerCase() });
     return signer.toLowerCase() === address.toLowerCase();
   } else {
     return eip1271.isValidSignature(address, sig, hash, provider);

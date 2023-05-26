@@ -273,4 +273,20 @@ export const SUPPORTED_CHAINS: IChainData[] = [
     chain_id: 10,
     network_id: 10,
   },
+  {
+    name: "Linea Goerli",
+    chain: "ETH",
+    rpc_url: "https://rpc.goerli.linea.build",
+    network: "testnet",
+    native_currency: {
+      name: "Ether",
+      symbol: "lineaETH",
+      decimals: "18",
+      contractAddress: "",
+      balance: "",
+    },
+    short_name: "eth",
+    chain_id: 59140,
+    network_id: 59140,
+  },
 ];
